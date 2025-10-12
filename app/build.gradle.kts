@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "snowsan0113.wetherapp"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "snowsan0113.wetherapp"
@@ -32,7 +32,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

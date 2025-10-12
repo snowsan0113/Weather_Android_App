@@ -5,4 +5,283 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <com.google.android.material.tabs.TabLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@android:color/holo_blue_dark"
+        app:tabSelectedTextColor="@android:color/holo_blue_dark"
+        app:tabTextColor="@android:color/darker_gray"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab1"
+            android:text="現在地\n日本"
+            android:layout_height="30dp"
+            android:layout_width="30dp"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab2"
+            android:text="鹿児島市"
+            android:layout_height="30dp"
+            android:layout_width="30dp"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab3"
+            android:text="薩摩市"
+            android:layout_height="30dp"
+            android:layout_width="30dp"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab4"
+            android:text="宮崎市"
+            android:layout_height="30dp"
+            android:layout_width="30dp"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0" />
+
+                    <!-- 1つ目 -->
+                    <LinearLayout
+                        android:layout_width="138dp"
+                        android:layout_height="154dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        tools:layout_editor_absoluteX="85dp"
+                        tools:layout_editor_absoluteY="75dp">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="101dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="今日（）"
+                            android:textSize="14sp" />
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="83dp"
+                            android:layout_height="75dp"
+                            app:srcCompat="@drawable/mark_tenki_hare" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="101dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="晴れ 100%"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text="13℃"
+                                android:textColor="#E43232"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14℃"
+                                android:textColor="#3F51B5"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0" />
+
+                    <!-- 2つ目 -->
+                    <LinearLayout
+                        android:layout_width="138dp"
+                        android:layout_height="154dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        tools:layout_editor_absoluteX="85dp"
+                        tools:layout_editor_absoluteY="75dp">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="101dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="今日（)"
+                            android:textSize="14sp" />
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="83dp"
+                            android:layout_height="75dp"
+                            app:srcCompat="@drawable/mark_tenki_hare" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="101dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="晴れ 100%"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text="13℃"
+                                android:textColor="#E43232"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14℃"
+                                android:textColor="#3F51B5"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/one_hour_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#C1C3CC"
+                    android:text="1時間ごと"
+                    android:textColor="#2F2C2C"
+                    android:textSize="14dp"
+                    app:cornerRadius="0dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/today_tomorrow_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#C1C3CC"
+                    android:text="今日と明日"
+                    android:textColor="#2F2C2C"
+                    android:textSize="14dp"
+                    app:cornerRadius="0dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/two_week_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#C1C3CC"
+                    android:text="2週間"
+                    android:textColor="#2F2C2C"
+                    android:textSize="14dp"
+                    app:cornerRadius="0dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:text="TextView" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="bottom|center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="3dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C1C3CC"
+            android:text="メニュー"
+            android:textColor="#2F2C2C"
+            android:textSize="14dp"
+            app:cornerRadius="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/other_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C1C3CC"
+            android:text="その他"
+            android:textColor="#2F2C2C"
+            android:textSize="14dp"
+            app:cornerRadius="0dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

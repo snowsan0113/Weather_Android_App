@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0"
         android:orientation="horizontal"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <Space
             android:layout_width="50dp"

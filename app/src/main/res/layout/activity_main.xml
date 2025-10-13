@@ -21,25 +21,25 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab1"
-            android:text="現在地\n日本"
+            android:id="@+id/current_location_tab"
+            android:text="現在地\n"
             android:layout_height="30dp"
             android:layout_width="30dp"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab2"
+            android:id="@+id/one_location_tab"
             android:text="鹿児島市"
             android:layout_height="30dp"
             android:layout_width="30dp"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab3"
+            android:id="@+id/two_location_tab"
             android:text="薩摩市"
             android:layout_height="30dp"
             android:layout_width="30dp"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab4"
+            android:id="@+id/three_location_tab"
             android:text="宮崎市"
             android:layout_height="30dp"
             android:layout_width="30dp"/>
@@ -64,9 +64,11 @@
                 android:layout_marginTop="28dp">
 
                 <LinearLayout
+                    android:id="@+id/oe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:visibility="visible">
 
                     <Space
                         android:layout_width="50dp"
@@ -243,11 +245,6 @@
                     app:cornerRadius="0dp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:text="TextView" />
         </LinearLayout>
     </ScrollView>
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.tabs.TabLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tabLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:tabMode="scrollable"
+    app:tabGravity="fill"
+    app:tabIndicatorColor="@android:color/holo_blue_dark"
+    app:tabSelectedTextColor="@android:color/holo_blue_dark"
+    app:tabTextColor="@android:color/darker_gray">
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/current_location_tab"
+        android:text="現在地\n"
+        android:layout_height="30dp"
+        android:layout_width="30dp"/>
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/one_location_tab"
+        android:text="鹿児島市"
+        android:layout_height="30dp"
+        android:layout_width="30dp"/>
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/two_location_tab"
+        android:text="薩摩市"
+        android:layout_height="30dp"
+        android:layout_width="30dp"/>
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/three_location_tab"
+        android:text="宮崎市"
+        android:layout_height="30dp"
+        android:layout_width="30dp"/>
+
+</com.google.android.material.tabs.TabLayout>

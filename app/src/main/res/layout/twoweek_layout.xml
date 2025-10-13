@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/twoweek_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <GridLayout
+            android:id="@+id/twoweek_grid"
+            android:layout_width="413dp"
+            android:layout_height="121dp"
+            android:layout_margin="16dp"
+            android:columnCount="4"
+            android:orientation="horizontal"
+            android:rowCount="6"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintVertical_bias="1.08">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/twoweek_oneday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="13日\n(月)" />
+
+                <ImageView
+                    android:id="@+id/twoweek_oneday_wether"
+                    android:layout_width="38dp"
+                    android:layout_height="33dp"
+                    android:layout_marginTop="4dp"
+                    app:srcCompat="@drawable/mark_tenki_hare" />
+
+                <TextView
+                    android:id="@+id/twoweek_oneday_max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="13℃"
+                    android:textColor="#E43232" />
+
+                <TextView
+                    android:id="@+id/twoweek_oneday_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="14℃"
+                    android:textColor="#3F51B5" />
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

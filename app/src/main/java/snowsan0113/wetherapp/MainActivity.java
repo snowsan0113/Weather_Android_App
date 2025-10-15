@@ -19,7 +19,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.tabs.TabLayout;
 
 import java.time.LocalDateTime;
+import java.time.format.TextStyle;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import snowsan0113.wetherapp.listener.ButtonListener;
@@ -103,6 +105,47 @@ public class MainActivity extends AppCompatActivity {
             one_hour.addView(linear);
 
             hour++;
+        }
+
+        LocalDateTime day_local_time = LocalDateTime.now();
+        GridLayout two_week_layout = findViewById(R.id.twoweek_grid);
+        two_week_layout.removeAllViews();
+
+        for (int n = 0; n < 14; n++) {
+            LinearLayout linear = new LinearLayout(this);
+            linear.setOrientation(LinearLayout.VERTICAL);
+            linear.setGravity(Gravity.CENTER);
+
+            TextView day_text = new TextView(this);
+            day_text.setGravity(Gravity.CENTER);
+            day_text.setText(String.valueOf(day_local_time.getDayOfMonth()) + "\n" + day_local_time.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.JAPAN));
+
+            ImageView image = new ImageView(this);
+            LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(
+                    (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 38, getResources().getDisplayMetrics()),
+                    (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 33, getResources().getDisplayMetrics())
+            );
+            imgParams.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
+            image.setLayoutParams(imgParams);
+            image.setImageResource(R.drawable.mark_tenki_hare);
+
+            TextView max_text = new TextView(this);
+            max_text.setText("xx℃");
+            max_text.setTextColor(Color.parseColor("#E43232"));
+            max_text.setGravity(Gravity.CENTER);
+            TextView min_text = new TextView(this);
+            min_text.setText("xx℃");
+            min_text.setTextColor(Color.parseColor("#3F51B5"));
+            min_text.setGravity(Gravity.CENTER);
+
+            linear.addView(day_text);
+            linear.addView(image);
+            linear.addView(max_text);
+            linear.addView(min_text);
+
+            two_week_layout.addView(linear);
+
+            day_local_time = day_local_time.plusDays(1);
         }
     }
 }

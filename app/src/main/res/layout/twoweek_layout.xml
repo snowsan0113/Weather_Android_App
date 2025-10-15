@@ -18,9 +18,9 @@
             android:layout_width="413dp"
             android:layout_height="121dp"
             android:layout_margin="16dp"
-            android:columnCount="4"
+            android:columnCount="14"
             android:orientation="horizontal"
-            android:rowCount="6"
+            android:rowCount="4"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintVertical_bias="1.08">
 

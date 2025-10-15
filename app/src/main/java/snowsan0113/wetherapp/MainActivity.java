@@ -147,5 +147,13 @@ public class MainActivity extends AppCompatActivity {
 
             day_local_time = day_local_time.plusDays(1);
         }
+
+        LocalDateTime localDateTime_todaytomorrow = LocalDateTime.now();
+        TextView today_text = findViewById(R.id.today_text);
+        today_text.setText("今日（" + localDateTime_todaytomorrow.getMonth().getValue() + "/" + localDateTime_todaytomorrow.getDayOfMonth() + ")");
+        localDateTime_todaytomorrow = localDateTime_todaytomorrow.plusDays(1);
+        TextView tomorrow_text = findViewById(R.id.tomorrow_text);
+        tomorrow_text.setText("明日（" + localDateTime_todaytomorrow.getMonth().getValue()  + "/" + localDateTime_todaytomorrow.getDayOfMonth() + ")");
+
     }
 }

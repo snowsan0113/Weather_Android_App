@@ -2,6 +2,8 @@ package snowsan0113.wetherapp.listener;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -71,16 +73,12 @@ public class TabClickListener implements View.OnClickListener {
                 fusedLocationClient.requestLocationUpdates(locationRequest,  new LocationCallback() {
                     @Override
                     public void onLocationResult(LocationResult locationResult) {
-                        Log.d("snowsan_weatherapp", "aaa");
-
-                        if (locationResult == null) {
-                            Log.d("snowsan_weatherapp", "失敗");
-                            current_location_tab.setText("失敗");
-                            return;
-                        }
                         for (Location location : locationResult.getLocations()) {
                             // Update UI with location data
                             // ...
+                            Log.d("snowsan_weatherapp", String.valueOf(locationResult.getLocations().size()) + location.hasAccuracy());
+
+
                             Log.d("snowsan_weatherapp", location.getProvider());
 
                             Geocoder geocoder = new Geocoder(activity, Locale.getDefault());
@@ -92,7 +90,19 @@ public class TabClickListener implements View.OnClickListener {
                                 );
                                 current_location_tab.setText(addresses.get(0).getAddressLine(0));
                             } catch (IOException e) {
-                                throw new RuntimeException(e);
+                                AlertDialog builder = new AlertDialog.Builder(activity)
+                                        .setMessage("位置情報を取得できませんでした")
+                                        .setPositiveButton("再取得", (dialogInterface, i) -> {
+
+                                        })
+                                        .setNegativeButton("閉じる", (dialogInterface, i) -> {
+
+                                        }).create();
+                                builder.show();
+
+                                Log.d("snowsan_weatherapp", "失敗");
+                                current_location_tab.setText("失敗");
+                                break;
                             }
 
                         }

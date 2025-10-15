@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,14 +61,18 @@ public class MainActivity extends AppCompatActivity {
         GridLayout one_hour = findViewById(R.id.onehour_grid);
         one_hour.removeAllViews();
 
+        LocalDateTime local_time_now = LocalDateTime.now();
+        int hour = local_time_now.getHour();
         for (int n = 0; n < 24; n++) {
+            if (hour > 23) hour = 0;
+
             LinearLayout linear = new LinearLayout(this);
             linear.setOrientation(LinearLayout.VERTICAL);
             linear.setGravity(Gravity.CENTER);
 
             TextView hour_text = new TextView(this);
             hour_text.setGravity(Gravity.CENTER);
-            hour_text.setText(String.valueOf(n));
+            hour_text.setText(String.valueOf(hour));
 
             ImageView imageView = new ImageView(this);
             LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
             one_hour.addView(linear);
 
+            hour++;
         }
     }
 }

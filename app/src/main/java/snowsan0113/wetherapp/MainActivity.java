@@ -2,6 +2,7 @@ package snowsan0113.wetherapp;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -21,9 +22,11 @@ import com.google.android.material.tabs.TabLayout;
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import snowsan0113.wetherapp.api.OpenWeatherAPI;
 import snowsan0113.wetherapp.listener.ButtonListener;
 import snowsan0113.wetherapp.listener.TabClickListener;
 
@@ -55,6 +58,54 @@ public class MainActivity extends AppCompatActivity {
         one_button.setTag("on");
         one_button.setBackgroundColor(Color.parseColor("#408EE9"));
         findViewById(R.id.onehour_grid).setVisibility(View.VISIBLE);
+
+        ImageView today = findViewById(R.id.today_weather_icon);
+        TextView today_text = findViewById(R.id.today_weather_text);
+        TextView today_min = findViewById(R.id.today_min_temp);
+        TextView today_max = findViewById(R.id.today_max_temp);
+
+        ImageView tomorrow = findViewById(R.id.tomorrow_weather_icon);
+        TextView tomorrow_text = findViewById(R.id.tomorrow_weather_text);
+        TextView tomorrow_min = findViewById(R.id.tomorrow_min_temp);
+        TextView tomorrow_max = findViewById(R.id.tomorrow_max_temp);
+
+        new Thread(() -> {
+            OpenWeatherAPI.OpenWeatherAPIData data = OpenWeatherAPI.getData();
+            List<OpenWeatherAPI.OpenWeatherAPIData.WeatherList> list = data.getWeatherList();
+            OpenWeatherAPI.OpenWeatherAPIData.WeatherList weatherList = list.get(0);
+            OpenWeatherAPI.OpenWeatherAPIData.WeatherList.Weather weather_today = weatherList.getWeather().get(0);
+
+            today_text.setText(weather_today.getDescription());
+
+            today_min.setText(weatherList.getMain().getTempMin(false) + "℃");
+            today_max.setText(weatherList.getMain().getTempMax(false) + "℃");
+            if (weather_today.getDescription().contains("曇り")) {
+                today.setImageResource(R.drawable.mark_tenki_kumori);
+            }
+            else if (weather_today.getDescription().contains("晴れ")) {
+                today.setImageResource(R.drawable.mark_tenki_hare);
+            }
+
+            Log.d("snowsan01131", String.valueOf(list.size()));
+            for (OpenWeatherAPI.OpenWeatherAPIData.WeatherList weatherList1 : list) {
+                Log.d("snowsan01133", weatherList1.getLocalDateTime().plusDays(1).getDayOfMonth() + ":" + LocalDateTime.now().plusDays(1).getDayOfMonth());
+                Log.d("snowsan01133", String.valueOf(weatherList1.getLocalDateTime().plusDays(1).getDayOfMonth() == LocalDateTime.now().plusDays(1).getDayOfMonth()));
+                if (weatherList1.getLocalDateTime().plusDays(1).getDayOfMonth() == LocalDateTime.now().plusDays(1).getDayOfMonth()) {
+                    OpenWeatherAPI.OpenWeatherAPIData.WeatherList.Weather weather_tomorrow = weatherList.getWeather().get(0);
+
+                    tomorrow_text.setText(weather_tomorrow.getDescription());
+
+                    tomorrow_min.setText(weatherList1.getMain().getTempMin(false) + "℃");
+                    tomorrow_max.setText(weatherList1.getMain().getTempMax(false) + "℃");
+                    if (weather_tomorrow.getDescription().contains("曇り")) {
+                        tomorrow.setImageResource(R.drawable.mark_tenki_kumori);
+                    }
+                    else if (weather_tomorrow.getDescription().contains("晴れ")) {
+                        tomorrow.setImageResource(R.drawable.mark_tenki_hare);
+                    }
+                }
+            }
+        }).start();
 
         setupLayout();
     }

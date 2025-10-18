@@ -1,5 +1,7 @@
 package snowsan0113.wetherapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +19,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
@@ -29,6 +35,7 @@ import java.util.Map;
 import snowsan0113.wetherapp.api.OpenWeatherAPI;
 import snowsan0113.wetherapp.listener.ButtonListener;
 import snowsan0113.wetherapp.listener.TabClickListener;
+import snowsan0113.wetherapp.manager.JsonManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -206,5 +213,24 @@ public class MainActivity extends AppCompatActivity {
         TextView tomorrow_text = findViewById(R.id.tomorrow_text);
         tomorrow_text.setText("明日（" + localDateTime_todaytomorrow.getMonth().getValue()  + "/" + localDateTime_todaytomorrow.getDayOfMonth() + ")");
 
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        JsonManager jsonManager = new JsonManager(this, JsonManager.FileType.CONFIG);
+        JsonObject raw_json = jsonManager.getRawElement().getAsJsonObject();
+        JsonArray tab_array = raw_json.getAsJsonArray("weather_location_tab");
+        JsonObject obj = new JsonObject();
+        obj.addProperty("location_name", "沖縄県");
+        tab_array.add(obj);
+
+        Log.d("snowsanspp", jsonManager.getFile().toString() + "," + tab_array.size() + tab_array.toString());
+        if (tab_array.size() > 0) {
+            for (int n = 0; n < tab_array.size(); n++) {
+                TabLayout.Tab tab = tabLayout.newTab();
+                JsonObject tab_obj = tab_array.get(n).getAsJsonObject();
+                String name = tab_obj.get("location_name").getAsString();
+                tab.setText(name);
+                tabLayout.addTab(tab);
+            }
+        }
+        jsonManager.updateJson();
     }
 }

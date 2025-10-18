@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -47,6 +48,20 @@ public class ButtonListener implements View.OnClickListener {
             else if (click_view.getId() == R.id.two_week_button) {
                 getLayOut().get(2).setVisibility(View.VISIBLE);
             }
+        }
+        else if (click_view.getId() == R.id.weather_location_button) {
+            FrameLayout main_ac = activity.findViewById(R.id.main);
+            View loc_layout = activity.findViewById(R.id.location_layout);
+            loc_layout.bringToFront();
+            View main1 = activity.findViewById(R.id.main1);
+            main1.setVisibility(View.INVISIBLE);
+            loc_layout.setVisibility(View.VISIBLE);
+        }
+        else if (click_view.getId() == R.id.weather_location_backbutton) {
+            View loc_layout = activity.findViewById(R.id.location_layout);
+            loc_layout.setVisibility(View.INVISIBLE);
+            View main1 = activity.findViewById(R.id.main1);
+            main1.setVisibility(View.VISIBLE);
         }
     }
 
